@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Delivery : MonoBehaviour
 {
+    bool hasPackage;
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Ouch!");
@@ -11,9 +12,15 @@ public class Delivery : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // if the thing we trigger is the package)
-        //{
-        //    then print "package picked up" to the console
-        //}
+         if (other.tag == "Package")
+         {
+             Debug.Log("Package picked up");
+             hasPackage = true;
+         }
+
+         if (other.tag == "Customer")
+         {
+             Debug.Log("Package Delivered");
+         }
     }
 }
